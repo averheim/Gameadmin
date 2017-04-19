@@ -1,5 +1,6 @@
 package se.nackademin.pagebeans;
 
+import se.nackademin.custom_exceptions.SessionUnavailableException;
 import se.nackademin.domain.User;
 import se.nackademin.services.UserHandler;
 
@@ -39,6 +40,11 @@ public class LoginBean {
     }
 
     public User getCurrentUser() {
-        return userHandler.getSessionBean().getCurrentUser();
+        try {
+            return userHandler.getCurrentUser();
+        } catch (SessionUnavailableException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

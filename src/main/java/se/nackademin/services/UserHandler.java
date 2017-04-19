@@ -6,11 +6,13 @@
 package se.nackademin.services;
 
 import se.nackademin.backend.FakeDB;
+import se.nackademin.custom_exceptions.SessionUnavailableException;
 import se.nackademin.domain.User;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.websocket.SessionException;
 import java.io.Serializable;
 import java.util.Map;
 
@@ -46,7 +48,14 @@ public class UserHandler implements Serializable {
         return false;
     }
 
-    public SessionBean getSessionBean() {
+    public User getCurrentUser() throws SessionUnavailableException {
+        return getSessionBean().getCurrentUser();
+    }
+
+    public SessionBean getSessionBean() throws SessionUnavailableException {
+        if (sessionBean == null) {
+            throw new SessionUnavailableException("Failed to inject session bean");
+        }
         return sessionBean;
     }
 
