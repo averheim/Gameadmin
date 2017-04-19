@@ -20,7 +20,7 @@
             <p:menuitem value="Logga in" outcome="/login.xhtml" rendered="#{!userHandler.sessionBean.loggedIn}">
                 <f:param name="i" value="1" />
             </p:menuitem>
-            <p:menuitem value="Logga ut" action="#{userHandler.doLogout}" outcome="/index.xhtml" rendered="#{userHandler.sessionBean.loggedIn}">
+            <p:menuitem value="Logga ut" action="#{userHandler.doLogout}"  rendered="#{userHandler.sessionBean.loggedIn}">
                 <f:param name="i" value="2" />
             </p:menuitem>
             <p:menuitem value="Registrera" outcome="/register.xhtml">

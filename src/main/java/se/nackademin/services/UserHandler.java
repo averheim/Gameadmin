@@ -50,8 +50,9 @@ public class UserHandler implements Serializable {
         return sessionBean;
     }
 
-    public void doLogout() {
+    public String doLogout() {
         sessionBean.doLogout();
+        return "/index.xhtml";
     }
 
 }

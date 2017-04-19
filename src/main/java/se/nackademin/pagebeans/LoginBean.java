@@ -7,9 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-/**
- * Created by MacsMac on 2017-04-19.
- */
+
 @Named
 @RequestScoped
 public class LoginBean {
