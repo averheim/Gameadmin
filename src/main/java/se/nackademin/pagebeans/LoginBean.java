@@ -1,5 +1,6 @@
 package se.nackademin.pagebeans;
 
+import se.nackademin.domain.User;
 import se.nackademin.services.UserHandler;
 
 import javax.enterprise.context.RequestScoped;
@@ -37,5 +38,9 @@ public class LoginBean {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public User getCurrentUser() {
+        return userHandler.getSessionBean().getCurrentUser();
     }
 }

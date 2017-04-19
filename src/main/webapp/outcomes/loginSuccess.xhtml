@@ -22,21 +22,21 @@
                     <h:outputText value="Användarnamn"/>
                     <h:inputText
                             id="userName"
-                            value="#{loginBean.userName}"
+                            value="#{loginBean.currentUser.userName}"
                             disabled="true"
                     />
 
                     <h:outputText value="Lösenord"/>
                     <h:inputText
                             id="password"
-                            value="#{loginBean.password}"
+                            value="#{loginBean.currentUser.password}"
                             disabled="true"
                     />
 
                     <h:outputText value="E-Post"/>
                     <h:outputLabel
                             id="email"
-                            value="#{loginBean.userName}"
+                            value="#{loginBean.currentUser.password}"
                     />
 
                 </h:panelGrid>
