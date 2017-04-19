@@ -9,6 +9,7 @@ import se.nackademin.backend.FakeDB;
 import se.nackademin.domain.User;
 
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Map;
@@ -21,7 +22,9 @@ import java.util.Map;
 public class UserHandler implements Serializable {
 
     Map<String, User> users = FakeDB.getInstance();
-    User currentUser;
+
+    @Inject
+    SessionBean sessionBean;
 
     public User doRegister(User selectedUser) {
         User user = users.get(selectedUser.getUserName());
@@ -36,7 +39,7 @@ public class UserHandler implements Serializable {
         User user = users.get(userName);
         if (user != null) {
             if(user.getPassword().equals(password)){
-                currentUser = user;
+                sessionBean.setCurrentUser(user);
                 return true;
             }
         }
