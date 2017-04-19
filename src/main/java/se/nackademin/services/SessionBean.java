@@ -26,4 +26,8 @@ public class SessionBean implements Serializable {
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
+
+    public void doLogout() {
+        this.currentUser = null;
+    }
 }

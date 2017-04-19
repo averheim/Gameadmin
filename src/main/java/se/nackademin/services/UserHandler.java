@@ -46,4 +46,8 @@ public class UserHandler implements Serializable {
         return false;
     }
 
+    public void doLogout() {
+        sessionBean.doLogout();
+    }
+
 }
