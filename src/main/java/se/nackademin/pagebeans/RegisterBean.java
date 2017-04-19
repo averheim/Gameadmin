@@ -27,7 +27,7 @@ public class RegisterBean {
     public String doRegister() {
         User newUser = new User(userName, password, email);
         User registeredUser = userHandler.doRegister(newUser);
-        return registeredUser != null ? "User '" + userName + "' is already registered" : "outcomes/registrationSuccess" ;
+        return registeredUser != null ? "User '" + userName + "' is already registered" : "outcomes/registrationSuccess.xhtml";
     }
 
     public String getPassword() {

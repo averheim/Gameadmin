@@ -64,4 +64,6 @@ public class UserHandler implements Serializable {
         return "/index.xhtml";
     }
 
+
+
 }
