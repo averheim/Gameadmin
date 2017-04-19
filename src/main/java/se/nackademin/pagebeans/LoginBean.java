@@ -11,15 +11,16 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
-public class loginBean {
+public class LoginBean {
+
 
     @Inject
     private UserHandler userHandler;
     private String password;
     private String userName;
 
-    public String doLogin(String userName, String password) {
-        return userHandler.doLogin(userName, password) ? "Wrong password or username" : "outcomes/loginSuccess" ;
+    public String doLogin() {
+        return userHandler.doLogin(userName, password) ? "outcomes/loginSuccess" : "Wrong password or username";
     }
 
     public String getPassword() {
