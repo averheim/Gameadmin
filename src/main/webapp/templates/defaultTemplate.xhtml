@@ -9,7 +9,7 @@
     <title>Facelet Title</title>
 </h:head>
 <h:body>
-    <h:outputStylesheet library="css" name="style.css"  />
+    <h:outputStylesheet library="css" name="style.css" />
 
     <div id="menu" class="menu">
         <h:form>
@@ -17,11 +17,14 @@
             <p:menuitem value="Hem" outcome="/index.xhtml">
                 <f:param name="i" value="0" />
             </p:menuitem>
-            <p:menuitem value="Logga in" outcome="/login.xhtml">
+            <p:menuitem value="Logga in" outcome="/login.xhtml" rendered="#{!userHandler.sessionBean.loggedIn}">
                 <f:param name="i" value="1" />
             </p:menuitem>
-            <p:menuitem value="Registrera" outcome="/register.xhtml">
+            <p:menuitem value="Logga ut" outcome="/logout.xhtml" rendered="#{userHandler.sessionBean.loggedIn}">
                 <f:param name="i" value="2" />
+            </p:menuitem>
+            <p:menuitem value="Registrera" outcome="/register.xhtml">
+                <f:param name="i" value="3" />
             </p:menuitem>
         </p:tabMenu>
         </h:form>
