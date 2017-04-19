@@ -20,13 +20,27 @@ import java.util.Map;
 @SessionScoped
 public class UserHandler implements Serializable {
 
+    Map<String, User> users = FakeDB.getInstance();
+    User currentUser;
+
     public User doRegister(User selectedUser) {
-        Map<String, User> users = FakeDB.getInstance();
         User user = users.get(selectedUser.getUserName());
         if (user == null) {
             users.put(selectedUser.getUserName(), selectedUser);
         }
         return user;
+    }
+
+    public boolean doLogin(String userName, String password){
+
+        User user = users.get(userName);
+        if (user != null) {
+            if(user.getPassword().equals(password)){
+                currentUser = user;
+                return true;
+            }
+        }
+        return false;
     }
 
 }
