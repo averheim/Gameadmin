@@ -46,7 +46,6 @@ public class UserHandler implements Serializable {
         return false;
     }
 
-
     public SessionBean getSessionBean() {
         return sessionBean;
     }
