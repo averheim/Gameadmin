@@ -11,14 +11,16 @@
 <h:body>
 
     <div id="menu" class="menu">
-        <p:tabMenu activeIndex="#{param.i}">
-            <p:menuitem value="Hem" outcome="/index.xhtml">
-                <f:param name="i" value="0" />
-            </p:menuitem>
-            <p:menuitem value="Registrera" outcome="/register.xhtml">
-                <f:param name="i" value="1" />
-            </p:menuitem>
-        </p:tabMenu>
+        <h:form>
+            <p:tabMenu activeIndex="#{param.i}">
+                <p:menuitem value="Hem" outcome="/index.xhtml">
+                    <f:param name="i" value="0" />
+                </p:menuitem>
+                <p:menuitem value="Registrera" outcome="/register.xhtml">
+                    <f:param name="i" value="1" />
+                </p:menuitem>
+            </p:tabMenu>
+        </h:form>
     </div>
 
     <ui:insert name="header">
