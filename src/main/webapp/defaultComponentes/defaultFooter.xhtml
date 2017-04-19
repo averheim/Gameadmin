@@ -8,18 +8,10 @@
     <title>Facelet Title</title>
 </h:head>
 <h:body>
-    <ui:composition template="templates/defaultTemplate.xhtml">
 
-        <ui:define name="header">
-            <h3>Du är i hem</h3>
-        </ui:define>
-
-        <ui:define name="content">
-            Hello from Facelets<br/>
-            <ui:include src="defaultComponentes/defaultFooter.xhtml"/>
-        </ui:define>
-
-    </ui:composition>
+    <ui:component>
+        Default footer
+    </ui:component>
 
 </h:body>
 </html>
