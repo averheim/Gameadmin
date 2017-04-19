@@ -31,7 +31,12 @@ public class UserHandler implements Serializable {
     public User doRegister(User selectedUser) {
         User user = users.get(selectedUser.getUserName());
         if (user == null) {
-            users.put(selectedUser.getUserName(), selectedUser);
+            try {
+                users.put(selectedUser.getUserName(), selectedUser);
+                getSessionBean().setCurrentUser(selectedUser);
+            } catch (SessionUnavailableException e) {
+                e.printStackTrace();
+            }
         }
         return user;
     }
@@ -41,8 +46,12 @@ public class UserHandler implements Serializable {
         User user = users.get(userName);
         if (user != null) {
             if(user.getPassword().equals(password)){
-                sessionBean.setCurrentUser(user);
-                return true;
+                try {
+                    getSessionBean().setCurrentUser(user);
+                    return true;
+                } catch (SessionUnavailableException e) {
+                    return false;
+                }
             }
         }
         return false;
