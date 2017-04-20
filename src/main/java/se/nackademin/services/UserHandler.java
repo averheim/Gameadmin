@@ -28,7 +28,7 @@ public class UserHandler implements Serializable {
     @Inject
     SessionBean sessionBean;
 
-    public Boolean doRegister(User newUser) {
+    public boolean doRegister(User newUser) {
         if (!userExists(newUser)) {
             users.put(newUser.getUserName(), newUser);
             doLogin(newUser.getUserName(), newUser.getPassword());
