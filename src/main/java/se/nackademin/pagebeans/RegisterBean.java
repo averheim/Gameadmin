@@ -8,10 +8,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
-/**
- * @author christopherolsson
- */
 @Named
 @RequestScoped
 public class RegisterBean {
