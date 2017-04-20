@@ -28,21 +28,16 @@ public class UserHandler implements Serializable {
     @Inject
     SessionBean sessionBean;
 
-    public User doRegister(User selectedUser) {
-        User user = users.get(selectedUser.getUserName());
-        if (user == null) {
-            try {
-                users.put(selectedUser.getUserName(), selectedUser);
-                getSessionBean().setCurrentUser(selectedUser);
-            } catch (SessionUnavailableException e) {
-                e.printStackTrace();
-            }
+    public Boolean doRegister(User newUser) {
+        if (!userExists(newUser)) {
+            users.put(newUser.getUserName(), newUser);
+            doLogin(newUser.getUserName(), newUser.getPassword());
+            return true;
         }
-        return user;
+        return false;
     }
 
     public boolean doLogin(String userName, String password){
-
         User user = users.get(userName);
         if (user != null) {
             if(user.getPassword().equals(password)){
@@ -57,6 +52,15 @@ public class UserHandler implements Serializable {
         return false;
     }
 
+    public String doLogout() {
+        sessionBean.doLogout();
+        return "/index.xhtml";
+    }
+
+    private boolean userExists(User user) {
+        return users.get(user.getUserName()) != null;
+    }
+
     public User getCurrentUser() throws SessionUnavailableException {
         return getSessionBean().getCurrentUser();
     }
@@ -67,12 +71,5 @@ public class UserHandler implements Serializable {
         }
         return sessionBean;
     }
-
-    public String doLogout() {
-        sessionBean.doLogout();
-        return "/index.xhtml";
-    }
-
-
 
 }
